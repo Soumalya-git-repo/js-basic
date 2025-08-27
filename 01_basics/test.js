@@ -56,3 +56,42 @@
 
 // let user = { name: "Krishiv", age: 1 };
 
+
+// <=========== ========= prefix and post fix concept ============= ==========>
+    
+
+// Prefix (++x) → Update first, then use.
+
+// let a = 5;
+// let b = ++a;  // a becomes 6, then b = 6
+// console.log(a); // 6
+// console.log(b); // 6
+
+
+// Postfix (x++) → Use first, then update.
+// let x = 5;
+// let y = x++;  // y = 5 (old value), then x becomes 6
+// console.log(x); // 6
+// console.log(y); // 5
+
+// Postfix (x++ / x--) → “First use, then change.”
+
+// Prefix (++x / --x) → “First change, then use.”
+
+
+
+// <============== memory usage ==============>
+
+    // stack (all premitive data types) 
+
+        // Used for primitive data types (Number, String, Boolean, Null, Undefined, Symbol, BigInt).
+        // Stores value directly.
+        // Very fast & managed automatically.
+        // Memory is cleared when the function ends.
+    
+    
+    // heap (non premitive type)
+
+        // Used for non-primitive (reference) types → Objects, Arrays, Functions.
+        // Stores reference (address) in stack, but the actual value lives in heap.
+        // Changes through one reference affect all variables pointing to it.
