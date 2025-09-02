@@ -436,3 +436,243 @@
 // console.log(firstName); // "Soumalya"
 // console.log(lastName);  // "Sen"
 
+// ------------------------function basics---------------------------
+
+// Function Syntax
+// ----------------------
+
+// function functionName(parameters) {
+//   // code to be executed
+//   return result;  // optional
+// }
+
+// function greet(name) {
+//   return "Hello " + name + "!";
+// }
+
+// console.log(greet("Soumalya"));  // Hello Soumalya!
+
+// greet → function name
+// name → parameter
+// "Soumalya" → argument (actual value passed)
+// return → sends result back
+
+// Default Parameters------------
+
+// function greet(name = "Guest") {
+//   return "Hello " + name;
+// }
+// console.log(greet());       // Hello Guest
+// console.log(greet("Raj"));  // Hello Raj
+
+
+// ---------------------Block Scope--------------------
+// Variables declared with let or const inside {} are only available inside that block.
+// But var does not follow block scope (only function scope).
+
+// {
+//   let a = 10;
+//   const b = 20;
+//   var c = 30;
+// }
+
+// console.log(c); //  works (var is function-scoped)
+// console.log(a); //  Error
+// console.log(b); //  Error
+
+// ------GLOBAL SCOPE-----
+
+// let globalVar = "I am Global";
+
+// function show() {
+//   console.log(globalVar); //  accessible
+// }
+// show();
+
+// console.log(globalVar); //  accessible
+
+
+// --------------Nested Scope Example----------------
+
+// function outer() {
+//   let outerVar = "I am from Outer";
+
+//   function inner() {
+//     let innerVar = "I am from Inner";
+
+//     console.log(outerVar); //  inner can access outer
+//     console.log(innerVar); //  inner can access itself
+//   }
+
+//   inner();
+//   console.log(innerVar); //  Error (outer cannot access inner)
+// }
+
+// outer();
+
+// -------------Hoisting with Functions----------------
+
+// Function Declarations are fully hoisted (you can call them before writing).
+
+// greet(); //  works
+
+// function greet() {
+//   console.log("Hello");
+// }
+
+// Function Expressions (var, let, const) follow variable hoisting rules.
+
+// With let / const, you get ReferenceError before declaration.
+
+// sayHi(); //  TypeError: sayHi is not a function
+
+// var sayHi = function () {
+//   console.log("Hi");
+// };
+
+
+
+// 1.----------------- Basic Arrow Function---------------------
+// const greet = () => "Hello, World!";
+// console.log(greet()); // Hello, World!
+
+// // 2. With Parameters
+// const square = (x) => x * x;
+// console.log(square(5)); // 25
+
+// // 3. Multiple Parameters
+// const multiply = (a, b) => a * b;
+// console.log(multiply(4, 3)); // 12
+
+// 🔹============== What is an IIFE?==========================
+
+//  IIFE stands for Immediately Invoked Function Expression.
+// It’s a function that is defined and executed immediately after creation.
+// Why use IIFE? 1. Avoid polluting the global scope
+// Useful for private variables, initialization, and modular code
+
+// (function(name) {
+//   console.log("Hello " + name);
+// })("Soumalya");
+
+// ------------ Arrow Function IIFE // You can also use arrow functions:
+
+// (() => {
+//   console.log("Arrow IIFE running!");
+// })();
+
+
+// ********************* important interview*************************
+
+// how javascript works
+
+
+
+
+// --------------------------------contol flows---------------------------
+
+
+
+// Symbol	Meaning	        Example	                          Result
+
+// ==	Equal to (loose)	5 == "5"	true (checks only value, not type)
+// ===	Strict equal	5 === "5"	false (checks value + type)
+// !=	Not equal (loose)	5 != "5"	false
+// !==	Strict not equal	5 !== "5"	true
+// >	Greater than	8 > 5	true
+// <	Less than	3 < 7	true
+// >=	Greater than or equal	5 >= 5	true
+// <=	Less than or equal	4 <= 3	false
+// &&	AND (both true)	(5 > 3 && 10 > 7)	true
+// ||	OR (any true)	(5 > 10 || 7 > 2)	true
+// !	NOT (negation)	!(5 > 3)	false
+
+
+// ======================== switch case =============================
+
+// switch is a conditional statement like if...else.
+// It lets you compare one value against multiple possible cases.
+// Makes code cleaner when you have many conditions.
+
+
+// switch(expression) {
+//   case value1:
+//     // code if expression === value1
+//     break;
+
+//   case value2:
+//     // code if expression === value2
+//     break;
+
+//   default:
+//     // code if no case matches
+// }
+
+
+
+// let day = 3;
+
+// switch (day) {
+//   case 1:
+//     console.log("Monday");
+//     break;
+//   case 2:
+//     console.log("Tuesday");
+//     break;
+//   case 3:
+//     console.log("Wednesday");
+//     break;
+//   case 4:
+//     console.log("Thursday");
+//     break;
+//   case 5:
+//     console.log("Friday");
+//     break;
+//   default:
+//     console.log("Weekend");
+// }
+
+
+
+
+
+// -----------------falsy value 
+
+// When JavaScript tries to evaluate a value in a condition, if it’s "empty" or "invalid", it is treated as false.
+
+// false
+// 0 (zero)
+// -0 (negative zero)
+// 0n (BigInt zero)
+// "" (empty string)
+// null
+// undefined
+// NaN (Not-a-Number)
+
+// -----------------Truthy value 
+
+// Anything that is not falsy is truthy.
+
+// "0"
+// 'false'
+// " " 
+// "hello" (non-empty string)
+// 123
+// -50
+// {} (empty object)
+// [] (empty array)
+// function() {}
+
+
+// ===================What is Nullish Coalescing (??)?
+
+// The nullish coalescing operator (??) is used to provide a default value only when the left-hand side is null or undefined.
+// let val1
+// val1 = 5 ?? 10;
+// val1 = null ?? 10;
+// val1 = undefined ?? 10;
+
+// val1 = null ?? 10 ?? 20;            
+
+// console.log(val1);
+
