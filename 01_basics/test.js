@@ -342,3 +342,97 @@
 // console.log(Object.values(users[0])); 
 // console.log(users[0].hasOwnProperty("age")); // true
 // console.log(users[0].hasOwnProperty("gender")); // false
+
+
+// singleton object and non singleton object
+
+// const tinderUser = new object ()
+// const tinderUser = {}
+
+// tinderUser.id = "123abc"
+// tinderUser.name = "Soumalya"
+// tinderUser.isLoggedIn = false
+// tinderUser.age = 28
+
+// console.log(tinderUser)
+
+// const regularUser = {
+//     email: "ac@gmail.com",   
+//         fullName: {
+//             userFullName: "soumalya sen",
+//             firstName: "Soumalya",
+//             lastName: "sen"
+//         }
+// }
+//  console.log(regularUser.fullName.firstName)
+
+
+// const user = [
+//     {id: 1, name: "Soumalya", age: 28},
+//     {id: 2, name: "Krishiv", age: 1},
+//     {id: 3, name: "Anwesha", age: 26},
+//     {id: 4, name: "Sourav", age: 32}
+// ]
+
+// user[1].name
+
+// console.log(tinderUser);
+// console.log(Object.keys(tinderUser));
+// console.log(Object.values(tinderUser));
+// console.log(Object.entries(tinderUser));
+
+// console.log(tinderUser.hasOwnProperty("age")); // true
+
+
+// const num = new Number(42);
+// console.log(num.valueOf()); // 42
+
+
+// const course = {
+//     title: "JavaScript Basics",
+//     lessons: 20,
+//     isFree: true,
+// }
+
+// const {title, lessons, isFree} = course
+
+// console.log(title);
+// console.log(lessons);
+// console.log(isFree);
+
+
+//============ Renaming Variables ==============
+
+
+// const user = {
+//   id: 1,
+//   name: "Soumalya",
+//   age: 28,
+//   isLoggedIn: false
+// };
+
+// const { name: fullName, age: years } = user;
+// console.log(fullName); // "Soumalya"
+// console.log(years);    // 28
+
+// ========== Default Values ============
+
+// const { email = "not provided" } = user;
+// console.log(email); // "not provided"
+
+
+
+//============ Nested Destructuring ==============
+
+// const regularUser = {
+//   email: "ac@gmail.com",
+//   fullName: {
+//     firstName: "Soumalya",
+//     lastName: "Sen"
+//   }
+// };
+
+// const { fullName: { firstName, lastName } } = regularUser;
+// console.log(firstName); // "Soumalya"
+// console.log(lastName);  // "Sen"
+
