@@ -241,6 +241,8 @@
 // Each element has an index (position), starting from 0
 
 
+
+
 // const myArr = [1, 2, 3, 4, 5]
 
 // console.log(myArr.push(6));
@@ -248,6 +250,24 @@
 // console.log(myArr.includes(7));
 // console.log(myArr.indexOf(2));
 // console.log(myArr);
+
+
+// 1. filter => Creates a new array with every element in an array that pass a test
+// 2. find => Returns the value of the first element in an array that pass a test
+// 3. forEach => Calls a function for each array element
+// 4. map => Creates a new array with the result of calling a function for each array element
+// 5. pop => Removes the last element of an array, and returns that element
+// 6.push => Adds new elements to the end of an array, and returns the new length
+// 7.Reduce => Reduce the values of an array to a single value (going left-to-right)
+// 8.reverse => 	Reverses the order of the elements in an array
+// 9. shift => Removes the first element of an array, and returns that element
+// 10. slice => Selects a part of an array, and returns the new array
+// 11. sort => Sorts the elements of an array
+// 12.splice => 	Adds/Removes elements from an array
+// 13.unshift => Adds new elements to the beginning of an array, and returns the new length
+// 14 join => Joins all elements of an array into a string
+
+
 
 
 // slice or splice 
@@ -666,7 +686,10 @@
 
 // ===================What is Nullish Coalescing (??)?
 
-// The nullish coalescing operator (??) is used to provide a default value only when the left-hand side is null or undefined.
+// The nullish coalescing operator (??) is used to provide a default value only when the left-hand side 
+// is null or undefined.
+
+
 // let val1
 // val1 = 5 ?? 10;
 // val1 = null ?? 10;
@@ -676,3 +699,268 @@
 
 // console.log(val1);
 
+//-------- turnary operator
+
+// condition ? true : false
+
+// const teaprice = 100;
+
+// teaprice >= 120 ? console.log("Tea is expensive") : console.log("Tea is affordable");
+
+// *********************** loops ***************************
+
+// ---------------for loop 
+
+
+// What is a for loop?
+// A loop allows you to run a block of code multiple times until a condition is false.
+// The basic for loop has 3 parts:
+
+// for (initialization; condition; update) {
+//   // code to run
+// }
+
+
+// for (let i = 0; i < 5; i++) {
+//   console.log(i);
+// }
+
+// let i = 0 → initialization (runs once at the start)
+// i < 5 → condition (checked before each loop)
+// i++ → update (runs after each loop)
+
+// Skipping Values (Even Numbers)
+// for (let i = 0; i <= 10; i += 2) {
+//   console.log(i);
+// }
+
+// break → exit loop completely
+// for (let i = 1; i <= 10; i++) {
+//   if (i === 5) break;
+//   console.log(i);
+// }
+// // Output: 1 2 3 4
+
+//  continue → skip current iteration
+// for (let i = 1; i <= 5; i++) {
+//   if (i === 3) continue;
+//   console.log(i);
+// }
+// // Output: 1 2 4 5
+
+//------------------ for of loop
+
+// for...of (arrays, iterables)
+
+// Iterates values.
+
+// let numbers = [10, 20, 30];
+// for (let num of numbers) {
+//   console.log(num);
+// }
+// // Output: 10 20 30
+
+
+// let numbers = [10, 20, 30];
+// for (let num of numbers) {
+//   if (num === 20) {
+//     console.log(num);
+//   }
+// }
+// // Output: 20
+
+
+// for...in (objects)
+
+// Iterates keys of an object.
+
+// let user = { name: "Soumalya", age: 30 };
+// for (let key in user) {
+//   console.log(key, ":", user[key]);
+// }
+// Output: name : Soumalya
+//         age : 30
+
+
+
+//------------------------ while Loop 
+
+// A while loop runs a block of code as long as a condition is true.
+// Unlike do...while, the condition is checked before the block runs.
+
+
+// while (condition) {
+//   // code block
+// }
+
+
+// let j = 5;
+
+// while (j < 5) {
+//   console.log("This won't run");
+// }
+
+
+// let seconds = 5;
+
+// while (seconds > 0) {
+//   console.log("Time left:", seconds);
+//   seconds--;
+// }
+
+// console.log("Time's up!");
+
+
+
+//================= do...while Loop
+
+// A do...while loop is like a while loop, but it always runs the block at least once 
+// (even if the condition is false).
+
+//  Useful when you want the code to run at least once before checking the condition.
+
+
+// do {
+//   // code block
+// } while (condition);
+
+
+// let i = 0;
+
+// do {
+//   console.log("Number:", i);
+//   i++;
+// } while (i < 3);
+
+
+
+// let x = 5;
+
+// do {
+//   console.log("Runs at least once!");
+//   x++;
+// } while (x < 5);
+
+// const coding = ["js","ruby","java","python","CPP"];
+
+// coding.forEach((element, index) => {
+
+// });
+
+
+// ---------------for each 
+
+// const users = [
+//   {
+//     id: 1,
+//     name: "Alice",
+//     age: 25
+//   },
+//   {
+//     id: 2,
+//     name: "Bob",
+//     age: 30
+//   },
+//   {
+//     id: 3,
+//     name: "Charlie",
+//     age: 28
+//   }
+// ];
+
+// users.forEach( (item, index, arr) => {
+//     console.log(item.age)
+// })
+
+
+// ----------------------------filter method--------------------
+
+// const books = [
+//   { id: 1, title: "The Great Gatsby", author: "F. Scott Fitzgerald", category: "Classic", publishedYear: 1925 },
+//   { id: 2, title: "Atomic Habits", author: "James Clear", category: "Self-help", publishedYear: 2018 },
+//   { id: 3, title: "Harry Potter", author: "J.K. Rowling", category: "Fantasy", publishedYear: 1997 },
+//   { id: 4, title: "Deep Work", author: "Cal Newport", category: "Self-help", publishedYear: 2016 },
+//   { id: 5, title: "To Kill a Mockingbird", author: "Harper Lee", category: "Classic", publishedYear: 1960 }
+// ];
+
+// // Example 1: Books published after 2000
+// const recentBooks = books.filter((book) => {
+//   return book.publishedYear > 2000;
+// });
+// console.log("Books published after 2000:", recentBooks);
+
+// // Example 2: Only 'Self-help' books
+// const selfHelpBooks = books.filter((book) => {
+//   return book.category === "Self-help";
+// });
+// console.log("Self-help books:", selfHelpBooks);
+
+// // Example 3: 'Classic' books before 1970
+// const oldClassics = books.filter((book) => {
+//   return book.category === "Classic" && book.publishedYear < 1970;
+// });
+// console.log("Old classics:", oldClassics);
+
+
+// -------------- map method ------------
+
+// const authors = [
+//   {
+//     name: "J.K. Rowling",
+//     books: [
+//       { title: "Harry Potter 1", year: 1997 },
+//       { title: "Harry Potter 2", year: 1999 },
+//       { title: "Harry Potter 3", year: 2003 }
+//     ]
+//   },
+//   {
+//     name: "George R.R. Martin",
+//     books: [
+//       { title: "Game of Thrones", year: 1996 },
+//       { title: "Clash of Kings", year: 1998 },
+//       { title: "Storm of Swords", year: 2000 }
+//     ]
+//   }
+// ];
+
+// const filteredBooks = authors.map((author) => {
+//   return {
+//     author: author.name,
+//     books: author.books.filter((book) => {
+//       return book.year > 2000;
+//     })
+//   };
+// });
+
+// console.log(filteredBooks);
+
+
+// const categories = [
+//   {
+//     name: "Electronics",
+//     products: [
+//       { id: 1, title: "Laptop", price: 55000, inStock: true },
+//       { id: 2, title: "Smartphone", price: 25000, inStock: false },
+//       { id: 3, title: "Headphones", price: 2000, inStock: true }
+//     ]
+//   },
+//   {
+//     name: "Clothing",
+//     products: [
+//       { id: 4, title: "T-shirt", price: 500, inStock: true },
+//       { id: 5, title: "Jeans", price: 2000, inStock: true },
+//       { id: 6, title: "Jacket", price: 4000, inStock: false }
+//     ]
+//   }
+// ];
+
+// const filteredProducts = categories.map((category) => {
+//   return {
+//     category: category.name,
+//     products: category.products.filter((product) => {
+//       return product.inStock === true && product.price < 5000;
+//     })
+//   };
+// });
+
+// console.log(filteredProducts);
