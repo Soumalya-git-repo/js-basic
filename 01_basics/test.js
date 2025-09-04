@@ -964,3 +964,41 @@
 // });
 
 // console.log(filteredProducts);
+
+//---------------- reduce method
+
+// reduce() is an array method used to reduce an array into a single value.
+// It applies a callback function to each element, carrying an accumulator (result so far).
+
+
+// const orders = [
+//   { id: 1, item: "Laptop", price: 50000, quantity: 1 },
+//   { id: 2, item: "Mouse", price: 1500, quantity: 2 },
+//   { id: 3, item: "Keyboard", price: 3000, quantity: 1 },
+//   { id: 4, item: "Monitor", price: 12000, quantity: 2 }
+// ];
+
+// const totalAmount = orders.reduce((total, order) => {
+//   return total + order.price * order.quantity;
+// }, 0);
+
+// console.log("Total Amount:", totalAmount); // Total Amount: 80000
+
+
+
+// const transactions = [
+//   { id: 1, type: "credit", amount: 5000 },
+//   { id: 2, type: "debit", amount: 2000 },
+//   { id: 3, type: "credit", amount: 3000 },
+//   { id: 4, type: "debit", amount: 1000 }
+// ];
+
+// const balance = transactions.reduce((acc, txn) => {
+//   if (txn.type === "credit") {
+//     return acc + txn.amount;
+//   } else {
+//     return acc - txn.amount;
+//   }
+// }, 0);
+
+// console.log("Final Balance:", balance); // Final Balance: 5000
