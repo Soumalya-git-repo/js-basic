@@ -1002,3 +1002,134 @@
 // }, 0);
 
 // console.log("Final Balance:", balance); // Final Balance: 5000
+
+
+
+// practice =========================================================================================================
+
+let country = "India";
+let continent = "Asia";
+let population = 1400000000;
+
+// console.log(country);
+// console.log(continent);
+// console.log(population);
+
+let isIsland = true;
+let language ="Hindi";
+
+// console.log(typeof isIsland);
+// console.log(typeof language);
+
+// console.log(population / 2);
+// population++;
+// console.log(population);
+
+let finlad = 6000000;
+
+//     if(population > finlad){
+//         console.log("India's population is greater than Finland");
+//     }else
+//     {
+//        console.log("India's population is not greater than Finland");
+//     }
+
+//     console.log(`${country} is in ${continent}, and its ${population} people speak ${language}.`);
+
+
+// if (population > 33) {
+//   console.log(`${country}'s population is above average`);
+// } else {
+//   console.log(
+//     `${country}'s population is ${33 - population} million
+//     below average`
+//   );
+// }
+
+
+// console.log('9' - '5'); // -> 4
+// console.log('19' - '13' + '17'); // ->  '617'
+// console.log('19' - '13' + 17); // -> 23
+// console.log('123' < 57); // -> false
+// console.log(5 + 6 + '4' + 9 - 4 - 2); // -> 1143
+
+
+// let numNeighbours = Number("100"); 
+
+// if(numNeighbours === 1){
+//    console.log("Only 1 border!")
+// }
+// else if(numNeighbours > 1){
+
+//     console.log( 'More than 1 border');
+
+// }
+// else{
+//     console.log('No borders');
+ 
+// }
+
+if(language === "English" && population < 50 && !isIsland){
+ console.log(`Sarah is looking for a new country to live in. She wants to live in a ${country} that speaks English, has less than 50 million people and is not an island.`);
+}
+else{
+    console.log(`${country} does not meet Sarah's criteria.`);
+}
+
+
+
+switch (language) {
+  case 'chinese':
+  case 'mandarin':
+    console.log('MOST number of native speakers!');
+    break;
+  case 'spanish':
+    console.log('2nd place in number of native speakers');
+    break;
+  case 'english':
+    console.log('3rd place');
+    break;
+  case 'hindi':
+    console.log('Number 4');
+    break;
+  case 'arabic':
+    console.log('5th most spoken language');
+    break;
+  default:
+    console.log('Great language too :D');
+}
+
+
+population > 33 ? console.log(`${country}'s population is above average`) : console.log(`${country}'s population is below average`);
+
+
+// let jhonHeight = 1.69
+// let markHeight = 1.95
+
+// let jhonWeight = 78
+// let markWeight = 92
+
+// let jhonBMI = jhonWeight / (jhonHeight * jhonHeight)
+// let markBMI = markWeight / (markHeight * markHeight)
+
+
+// let markHigherBMI = markBMI > jhonBMI; // Boolean variable
+
+// console.log(markHigherBMI); // true if Mark's BMI is higher, false otherwise
+
+
+// console.log(jhonBMI, markBMI);
+
+// if(markBMI > jhonBMI){
+//     console.log(`Mark's BMI (${markBMI}) is higher than Jhon's (${jhonBMI})`);
+// }
+// else{
+//     console.log(`Jhon's BMI (${jhonBMI}) is higher than Mark's (${markBMI})`);
+// }
+
+
+
+let dolphinsScore = (96 + 108 + 89) / 3
+let koalasScore = (88 + 91 + 110) / 3
+
+console.log(dolphinsScore, koalasScore);
