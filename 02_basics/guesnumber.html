@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Guess the Number — JavaScript version</title>
+  <style>
+    :root{
+      --bg:#0f172a; --card:#0b1220; --accent:linear-gradient(90deg,#7c3aed,#06b6d4);
+      --glass: rgba(255,255,255,0.03);
+      --success:#10b981; --danger:#ef4444; --muted:#94a3b8;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial; background:radial-gradient(1200px 600px at 10% 10%, rgba(34,197,94,0.06), transparent), var(--bg); color:#e6eef8; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px}
+
+    .card{width:min(480px,96vw); background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:14px; padding:28px; box-shadow:0 10px 30px rgba(2,6,23,0.6); border:1px solid rgba(255,255,255,0.03)}
+    h1{margin:0 0 12px; font-size:24px; letter-spacing:-0.02em; text-align:center}
+
+    .number-box{
+      display:flex; justify-content:center; align-items:center;
+      font-size:40px; font-weight:700; background:var(--glass); border-radius:12px; width:80px; height:80px; margin:0 auto 20px; color:#fff;
+    }
+    .hidden-number{color:#7c3aed}
+
+    .message{margin:10px 0; padding:12px 14px; border-radius:10px; font-weight:600; display:none; text-align:center}
+    .low{background:linear-gradient(90deg, rgba(59,130,246,0.08), transparent); color:#cfe7ff; border:1px solid rgba(59,130,246,0.12)}
+    .high{background:linear-gradient(90deg, rgba(245,158,11,0.06), transparent); color:#ffe9c8; border:1px solid rgba(245,158,11,0.12)}
+    .correct{background:linear-gradient(90deg, rgba(16,185,129,0.08), transparent); color:#dff6ee; border:1px solid rgba(16,185,129,0.12)}
+
+    .scoreboard{margin:10px 0; font-size:16px; text-align:center; color:var(--muted)}
+    .scoreboard span{display:inline-block; margin:0 8px}
+
+    .input-box{display:flex; gap:8px; margin-top:20px}
+    .input-box input[type="number"]{
+      flex:1; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.1);
+      background:var(--glass); color:#fff; font-size:16px; outline:none;
+    }
+    .input-box input[type="submit"]{
+      padding:12px 20px; border-radius:10px; border:none; font-weight:600; cursor:pointer;
+      background:var(--accent); color:#fff; transition:opacity .2s;
+    }
+    .input-box input[type="submit"]:hover{opacity:.85}
+
+    footer{margin-top:20px; font-size:12px; text-align:center; color:var(--muted)}
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <h1>🎯 Guess the Number 🎲</h1>
+    <div class="number-box" id="numberBox">❓</div>
+
+    <div class="message low" id="lowMsg">⬇️ Too low — try a higher number.</div>
+    <div class="message high" id="highMsg">⬆️ Too high — try a lower number.</div>
+    <div class="message correct" id="correctMsg">✅ Correct! 🎉 A new number has been chosen.</div>
+
+    <div class="scoreboard">
+      <span id="score">🏆 Score: 0</span>
+      <span id="highScore">🥇 High Score: 0</span>
+    </div>
+
+    <form class="game" id="gameForm">
+      <div class="input-box">
+        <input type="number" min="1" max="10" name="guess" id="guessInput" placeholder="🔢 Your guess" required>
+        <input type="submit" value="👉 Guess">
+      </div>
+    </form>
+
+    <footer>Made with ❤️, HTML, CSS & JS</footer>
+  </main>
+
+  <script>
+    const form = document.getElementById('gameForm');
+    const guessInput = document.getElementById('guessInput');
+    const lowMsg = document.getElementById('lowMsg');
+    const highMsg = document.getElementById('highMsg');
+    const correctMsg = document.getElementById('correctMsg');
+    const numberBox = document.getElementById('numberBox');
+    const scoreEl = document.getElementById('score');
+    const highScoreEl = document.getElementById('highScore');
+
+    let secretNumber = Math.floor(Math.random() * 10) + 1;
+    let score = 0;
+    let highScore = 0;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const guess = parseInt(guessInput.value);
+
+      lowMsg.style.display = 'none';
+      highMsg.style.display = 'none';
+      correctMsg.style.display = 'none';
+
+      if (isNaN(guess)) return;
+
+      if (guess < secretNumber) {
+        lowMsg.style.display = 'block';
+      } else if (guess > secretNumber) {
+        highMsg.style.display = 'block';
+      } else {
+        correctMsg.style.display = 'block';
+        numberBox.textContent = secretNumber;
+        score++;
+        if (score > highScore) {
+          highScore = score;
+        }
+        scoreEl.textContent = `🏆 Score: ${score}`;
+        highScoreEl.textContent = `🥇 High Score: ${highScore}`;
+        setTimeout(() => {
+          secretNumber = Math.floor(Math.random() * 10) + 1;
+          numberBox.textContent = '❓';
+        }, 1500);
+      }
+
+      guessInput.value = '';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pig Game</title>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to top left, #1e3c72, #2a5298);
+  font-family: system-ui, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+main {
+  position: relative;
+  width: 1000px;
+  height: 600px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  display: flex;
+  overflow: hidden;
+}
+
+.player {
+  flex: 50%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.player--active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.name {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.score {
+  font-size: 4rem;
+  margin-bottom: auto;
+}
+
+.current {
+  background: #162447;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.current-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.current-score {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Dice */
+.dice {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 70px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  border-radius: 10px;
+
+}
+
+/* Buttons */
+.btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  background: #21e6c1;
+  color: #222;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #1ac7a5;
+}
+
+.btn--new {
+  top: 30px;
+}
+
+.btn--roll {
+  bottom: 120px;
+}
+
+.btn--hold {
+  bottom: 50px;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+</style>
+</head>
+<body>
+  <main>
+    <!-- Player 1 -->
+    <section class="player player--0 player--active">
+      <h2 class="name" id="name--0">Player 1</h2>
+      <p class="score" id="score--0">0</p>
+      <div class="current">
+        <p class="current-label">Current</p>
+        <p class="current-score" id="current--0">0</p>
+      </div>
+    </section>
+
+    <!-- Player 2 -->
+    <section class="player player--1">
+      <h2 class="name" id="name--1">Player 2</h2>
+      <p class="score" id="score--1">0</p>
+      <div class="current">
+        <p class="current-label">Current</p>
+        <p class="current-score" id="current--1">0</p>
+      </div>
+    </section>
+
+    <!-- Dice image -->
+    <img src="images/dice_one.png" alt="Playing dice" class="dice" />
+
+    <!-- Buttons -->
+    <button class="btn btn--new">🔄 New game</button>
+    <button class="btn btn--roll">🎲 Roll dice</button>
+    <button class="btn btn--hold">📥 Hold</button>
+  </main>
+
+  <script>
+
+// selecting element
+
+ const score0El = document.getElementById('score--0');
+ const score1El = document.getElementById('score--1');
+ const current0El = document.getElementById('current--0');
+ const current1El = document.getElementById('current--1');
+
+
+ const diceEl = document.querySelector('.dice');
+ const btnHold = document.querySelector('.btn--hold');
+ const btnNew = document.querySelector('.btn--new');
+ const btnRoll = document.querySelector('.btn--roll');
+
+// starting condition
+score0El.textContent = 0;
+score1El.textContent = 0;
+
+diceEl.classList.add('hidden');
+
+
+let currentScore = 0;
+
+ 
+btnRoll.addEventListener('click', function() {
+
+const dice = parseInt(Math.random() * 6) + 1;
+
+diceEl.classList.remove('hidden');
+diceEl.src=`images/dice_${dice}.png`;
+
+if(dice !== 1){
+    currentScore += dice;
+    current0El.textContent = currentScore;
+}else{
+
+  
+}
+
+
+})
+
+
+
+
+  </script>
+</body>
+</html>
