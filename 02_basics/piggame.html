@@ -1,132 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pig Game</title>
-<style>
+  <style>
     * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  background: linear-gradient(to top left, #1e3c72, #2a5298);
-  font-family: system-ui, sans-serif;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-}
+    body {
+      background: linear-gradient(to top left, #1e3c72, #2a5298);
+      font-family: system-ui, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
 
-main {
-  position: relative;
-  width: 1000px;
-  height: 600px;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(8px);
-  border-radius: 10px;
-  display: flex;
-  overflow: hidden;
-}
+    main {
+      position: relative;
+      width: 1000px;
+      height: 600px;
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(8px);
+      border-radius: 10px;
+      display: flex;
+      overflow: hidden;
+    }
 
-.player {
-  flex: 50%;
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s;
-}
+    .player {
+      flex: 50%;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
 
-.player--active {
-  background: rgba(255, 255, 255, 0.15);
-}
+    .player--active {
+      background: rgba(255, 255, 255, 0.15);
+    }
 
-.name {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
+    .name {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
 
-.score {
-  font-size: 4rem;
-  margin-bottom: auto;
-}
+    .score {
+      font-size: 4rem;
+      margin-bottom: auto;
+    }
 
-.current {
-  background: #162447;
-  border-radius: 10px;
-  padding: 1rem 2rem;
-  text-align: center;
-}
+    .current {
+      background: #162447;
+      border-radius: 10px;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
 
-.current-label {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
+    .current-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
 
-.current-score {
-  font-size: 2rem;
-  font-weight: bold;
-}
+    .current-score {
+      font-size: 2rem;
+      font-weight: bold;
+    }
 
-/* Dice */
-.dice {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 70px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  border-radius: 10px;
+    /* Dice */
+    .dice {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 70px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
 
-}
+    }
 
-/* Buttons */
-.btn {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0.75rem 2rem;
-  border: none;
-  border-radius: 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
-  background: #21e6c1;
-  color: #222;
-  transition: background 0.2s;
-}
+    /* Buttons */
+    .btn {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      background: #21e6c1;
+      color: #222;
+      transition: background 0.2s;
+    }
 
-.btn:hover {
-  background: #1ac7a5;
-}
+    .btn:hover {
+      background: #1ac7a5;
+    }
 
-.btn--new {
-  top: 30px;
-}
+    .btn--new {
+      top: 30px;
+    }
 
-.btn--roll {
-  bottom: 120px;
-}
+    .btn--roll {
+      bottom: 120px;
+    }
 
-.btn--hold {
-  bottom: 50px;
-}
+    .btn--hold {
+      bottom: 50px;
+    }
 
-.hidden {
-  display: none;
-}
+    .hidden {
+      display: none;
+    }
 
-
-
-</style>
+    .player--winner {
+      background-color: #307d30;
+    }
+  </style>
 </head>
+
 <body>
   <main>
     <!-- Player 1 -->
@@ -160,50 +163,98 @@ main {
 
   <script>
 
-// selecting element
-
- const score0El = document.getElementById('score--0');
- const score1El = document.getElementById('score--1');
- const current0El = document.getElementById('current--0');
- const current1El = document.getElementById('current--1');
-
-
- const diceEl = document.querySelector('.dice');
- const btnHold = document.querySelector('.btn--hold');
- const btnNew = document.querySelector('.btn--new');
- const btnRoll = document.querySelector('.btn--roll');
-
-// starting condition
-score0El.textContent = 0;
-score1El.textContent = 0;
-
-diceEl.classList.add('hidden');
-
-
-let currentScore = 0;
-
- 
-btnRoll.addEventListener('click', function() {
-
-const dice = parseInt(Math.random() * 6) + 1;
-
-diceEl.classList.remove('hidden');
-diceEl.src=`images/dice_${dice}.png`;
-
-if(dice !== 1){
-    currentScore += dice;
-    current0El.textContent = currentScore;
-}else{
-
-  
-}
-
-
-})
+    // selecting element
 
 
 
+    const player0El = document.querySelector('.player--0');
+    const player1El = document.querySelector('.player--1');
+    const score0El = document.getElementById('score--0');
+    const score1El = document.getElementById('score--1');
+    const current0El = document.getElementById('current--0');
+    const current1El = document.getElementById('current--1');
+
+
+    const diceEl = document.querySelector('.dice');
+    const btnHold = document.querySelector('.btn--hold');
+    const btnNew = document.querySelector('.btn--new');
+    const btnRoll = document.querySelector('.btn--roll');
+
+    // starting condition
+    score0El.textContent = 0;
+    score1El.textContent = 0;
+
+    diceEl.classList.add('hidden');
+
+
+    let currentScore = 0;
+    let activePlayer = 0;
+    let scores = [0, 0];
+
+
+    const switchPlayer = function () {
+      document.getElementById(`current--${activePlayer}`).textContent = 0;
+      currentScore = 0;
+      activePlayer = activePlayer === 0 ? 1 : 0;
+      player0El.classList.toggle('player--active');
+      player1El.classList.toggle('player--active');
+    }
+
+
+
+    btnRoll.addEventListener('click', function () {
+
+      const dice = parseInt(Math.random() * 6) + 1;
+
+      diceEl.classList.remove('hidden');
+      diceEl.src = `images/dice_${dice}.png`;
+
+      if (dice !== 1) {
+        currentScore += dice;
+        document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+
+
+      } else {
+        switchPlayer();
+
+      }
+
+
+    })
+
+    btnHold.addEventListener('click', function () {
+      scores[activePlayer] += currentScore;
+      document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
+      if (scores[activePlayer] >= 100) {
+        document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
+        document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
+        diceEl.classList.add('hidden');
+        btnRoll.disabled = true;
+        btnHold.disabled = true;
+      } else {
+        switchPlayer();
+      }
+
+    })
+
+    btnNew.addEventListener('click', function () {
+      currentScore = 0;
+      activePlayer = 0;
+      scores = [0, 0];
+      score0El.textContent = 0;
+      score1El.textContent = 0;
+      current0El.textContent = 0;
+      current1El.textContent = 0;
+      diceEl.classList.add('hidden');
+      player0El.classList.add('player--active');
+      player1El.classList.remove('player--active');
+      player0El.classList.remove('player--winner');
+      player1El.classList.remove('player--winner');
+      btnRoll.disabled = false;
+      btnHold.disabled = false;
+    })
 
   </script>
 </body>
+
 </html>
